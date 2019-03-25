@@ -22,8 +22,6 @@ Steps:
 
 After this handshake, secure mTLS sessions can be established using the normal handshake.
 
-![mTLS handshake](https://visa.i.lithium.com/t5/image/serverpage/image-id/180i8191F313DC0D165C?v=1.0)
-
 ### Dependencies
 
 This package will be made isomorphic, but for now it is node-only and requires the following:
