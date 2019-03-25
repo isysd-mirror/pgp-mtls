@@ -4,7 +4,25 @@ Peer to peer authentication using OpenPGP identities to manage individual Certif
 
 ### OpenPGP + CA Handshake
 
-![pgp ca handshake](/pgp-mtls.jpg)
+Before initiating a mutual TLD session, the "client" (sender) and "server" (receiver) must identify each other by OpenPGP keys, and sign each others SSL certificates.
+
+Steps:
+
+1. Client sends their PGP Public Key to the server (`POST /pks/add`)
+2. Server checks the signatures on the client key against trust database, and imports if approved.
+3. Response body is the Server's PGP Public Key, but status will be 401 if step #2 failed
+4. Client checks the signatures on the server key against trust database, and imports if approved.
+5. Client sends a PGP-signed Certificate Signing Request (CSR) (`POST /pks/csr`)
+6. Server verifies the PGP signature, and uses local Certificate Authority to sign the Client's CSR
+7. Server responds with signed client certificate, and own PGP-signed CSR
+8. (optional) Client verifies the PGP signature, and uses local Certificate Authority to sign the Server's CSR
+9. (optional) Client send signed Server certificate (`POST /pks/cert`)
+
+![PGP CA handshake](https://raw.githubusercontent.com/isysd-mirror/guld-auth/isysd/img/pgp-mtls.jpg)
+
+After this handshake, secure mTLS sessions can be established using the normal handshake.
+
+![mTLS handshake](https://visa.i.lithium.com/t5/image/serverpage/image-id/180i8191F313DC0D165C?v=1.0)
 
 ### Dependencies
 
