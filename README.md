@@ -1,10 +1,12 @@
 # guld-auth
 
-Peer to peer authentication using OpenPGP identities to manage individual Certificate Authorities and mutual TLS sessions.
+Peer to peer authentication using OpenPGP identities to manage individual Certificate Authorities and mutual TLS sessions. No more centralized Certificate Authorities or application-specific authentication! Simply install your client SSL certificate to your [browser](https://www.tbs-certificates.co.uk/FAQ/en/installer_certificat_client_google_chrome.html) or [app](https://github.com/digitalbazaar/forge) and make requests.
+
+This library currently does not make any network requests, only providing the authentication utilities. The protocol could be used in other context, but it is easiest to assume an extension of the HTTP Keyserver Protocol, as shown in the examples below.
 
 ### OpenPGP + CA Handshake
 
-Before initiating a mutual TLD session, the "client" (sender) and "server" (receiver) must identify each other by OpenPGP keys, and sign each others SSL certificates.
+Before initiating a mutual TLS session, the "client" (sender) and "server" (receiver) must identify each other by OpenPGP keys, and sign each others SSL certificates.
 
 Steps:
 
