@@ -1,0 +1,28 @@
+{
+  "name": "guld-auth",
+  "version": "0.1.0",
+  "description": "Authenticate using OpenPGP Web of Trust and mutual TLS.",
+  "main": "index.js",
+  "module": "main.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "guld",
+    "openpgp",
+    "pgp",
+    "gpg",
+    "gnupg",
+    "auth",
+    "web",
+    "security"
+  ],
+  "author": "isysd",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.19",
+    "keyring-gpg": "^0.4.1",
+    "node-forge": "^0.8.2",
+    "peerca": "^1.0.3"
+  }
+}
