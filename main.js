@@ -21,7 +21,7 @@ export async function verifyCSR (pem, signature) {
     if (cn.indexOf('.')) cn = cn.split('.').pop()
     var fpr = await keyring.listKeys(`${cn}@${cn}.guld`)
     if (!fpr || fpr.length === 0) return false
-    if keyring.verify(pem, signature, Object.keys(fpr))
+    return keyring.verify(pem, signature, Object.keys(fpr))
   } else {
     return false
   }
